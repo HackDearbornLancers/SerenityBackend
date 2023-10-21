@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from dotenv import load_dotenv
 from response import api_blueprint, generate_openai_response
+from sentiment import simple_page
 
 load_dotenv()
 
