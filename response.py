@@ -1,15 +1,17 @@
+from flask import Blueprint
 import os
 import openai
 from dotenv import load_dotenv
 
+api_blueprint = Blueprint("api", __name__)
 load_dotenv()
 
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 api_key = os.getenv("OPENAI_API_KEY")
 
+openai.api_key = OPENAI_API_KEY
 if api_key is None:
     raise EnvironmentError("API key not found in .env file")
-
-openai.api_key = api_key
 
 def create_initial_conversation():
     # Create and return an initial conversation with a system message
@@ -29,8 +31,6 @@ def generate_openai_response(message, conversation):
         conversation.append({"role": "assistant", "content": completion})  # Store assistant's response
         return completion
 
-
     except Exception as e:
         return str(e)
-
     
