@@ -2,7 +2,7 @@ from flask import Flask
 from flask import Blueprint, render_template, abort, request, jsonify
 from google.cloud import language_v2
 
-sentiment_page = Blueprint('sentiment_page', __name__,template_folder='templates')
+sentiment_page = Blueprint('sentiment_page', __name__)
 
 @sentiment_page.route("/s")
 def hello_world():

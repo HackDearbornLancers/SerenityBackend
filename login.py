@@ -1,6 +1,6 @@
 from flask import Flask, Blueprint, render_template, abort, request, jsonify
 
-login_page = Blueprint('login', __name__, template_folder='templates')
+login_page = Blueprint('login', __name__)
 
 @login_page.route("/login", methods=["POST"])
 def login():
