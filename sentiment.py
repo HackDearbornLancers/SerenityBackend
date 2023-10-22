@@ -2,13 +2,13 @@ from flask import Flask
 from flask import Blueprint, render_template, abort, request, jsonify
 from google.cloud import language_v2
 
-simple_page = Blueprint('simple_page', __name__,template_folder='templates')
+sentiment_page = Blueprint('sentiment_page', __name__,template_folder='templates')
 
-@simple_page.route("/s")
+@sentiment_page.route("/s")
 def hello_world():
     return "<p>Hello, World!</p>"
 
-@simple_page.route("/sentiment", methods=['POST'])
+@sentiment_page.route("/sentiment", methods=['POST'])
 def sentiment():
     if not request.json or 'text' not in request.json:
         return jsonify({"error": "Please provide text in JSON body"}), 400
