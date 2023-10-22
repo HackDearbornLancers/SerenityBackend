@@ -5,10 +5,9 @@ from sentiment import simple_page
 
 load_dotenv()
 
-
-
 app = Flask(__name__)
 app.register_blueprint(api_blueprint, url_prefix='/v1')  # Register the blueprint with a URL prefix
+app.register_blueprint(simple_page)
 
 @app.route('/openai', methods=['POST'])
 def openai_endpoint():
