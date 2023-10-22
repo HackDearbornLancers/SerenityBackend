@@ -1,13 +1,13 @@
 from flask import Flask, jsonify, request
 from dotenv import load_dotenv
 from response import api_blueprint, generate_openai_response
-from sentiment import simple_page
+from sentiment import sentiment_page
 
 load_dotenv()
 
 app = Flask(__name__)
 app.register_blueprint(api_blueprint, url_prefix='/v1')  # Register the blueprint with a URL prefix
-app.register_blueprint(simple_page)
+app.register_blueprint(sentiment_page)
 
 @app.route('/openai', methods=['POST'])
 def openai_endpoint():
